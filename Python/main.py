@@ -7,12 +7,16 @@ from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
 
 from autogen.settings import url, import_paths
+from backend.main_window import MainWindow
+
 
 if __name__ == '__main__':
     app = QGuiApplication(sys.argv)
     engine = QQmlApplicationEngine()
 
     app_dir = Path(__file__).parent.parent
+
+    os.environ["QT_QUICK_CONTROLS_CONF"] = str(app_dir / "qtquickcontrols2.conf")
 
     engine.addImportPath(os.fspath(app_dir))
     for path in import_paths:
@@ -21,4 +25,5 @@ if __name__ == '__main__':
     engine.load(os.fspath(app_dir/url))
     if not engine.rootObjects():
         sys.exit(-1)
+
     sys.exit(app.exec())

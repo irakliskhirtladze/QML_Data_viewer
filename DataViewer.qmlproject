@@ -5,7 +5,7 @@ import QmlProject
 
 Project {
     mainFile: "DataViewerContent/App.qml"
-    mainUiFile: "DataViewerContent/Screen01.ui.qml"
+    mainUiFile: "DataViewerContent/MainScreenForm.ui.qml"
     targetDirectory: "/opt/DataViewer"
     enableCMakeGeneration: false
     enablePythonGeneration: true

@@ -1,0 +1,65 @@
+// Copyright (C) 2021 The Qt Company Ltd.
+// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
+
+import QtQuick
+import QtQuick.Controls 2.15
+import DataViewer
+import main_window
+
+
+Window {
+    id: mainWindow
+    width: Screen.width
+    height: Screen.height
+
+    visible: true
+    visibility: Window.Maximized
+    title: "DataViewer"
+
+
+    MainScreenForm {
+        id: mainScreen
+        anchors.fill: parent
+    }
+
+    MainWindow {
+        id: main_window
+    }
+
+
+    // Place the TableView into the area defined by table_rect.
+    TableView {
+        parent: mainScreen.table_rect
+        id: dynamicTable
+        anchors.fill: parent
+
+        // // Use a simple ListModel as an example.
+        // model: ListModel {
+        //     ListElement { name: "Alice"; age: 30 }
+        //     ListElement { name: "Bob"; age: 25 }
+        //     ListElement { name: "Charlie"; age: 35 }
+        // }
+        //
+        // // The delegate for each cell.
+        // // The delegate can check TableView.column to know which column it is.
+        // delegate: Rectangle {
+        //     width: 100
+        //     height: 40
+        //     border.width: 1
+        //     Text {
+        //         anchors.centerIn: parent
+        //         text: (TableView.column === 0 ? name : age)
+        //     }
+        // }
+    }
+
+
+    Connections {
+        target: mainScreen.load_data_btn
+        onClicked: main_window.load_data()
+    }
+
+}
+
+
+
