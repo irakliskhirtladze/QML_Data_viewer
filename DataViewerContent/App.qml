@@ -38,8 +38,11 @@ Window {
 
     Connections {
         target: mainScreen.load_data_btn
-        onClicked: main_window.load_data()
+        function onClicked() {
+            main_window.load_data()
+        }
     }
+
 
 }
 
